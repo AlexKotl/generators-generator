@@ -24,6 +24,11 @@
       <div>
         <NuxtPage />
       </div>
+
+      <footer class="py-10 text-center text-xs text-slate-300">
+        Copyright &copy; 2022 <br />
+        <a href="https://www.linkedin.com/in/alex-kotl/" class="underline" target="_blank">Oleksandr Kotliarov</a>
+      </footer>
     </div>
   </div>
 </template>

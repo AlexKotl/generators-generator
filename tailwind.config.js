@@ -6,4 +6,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: ["flex-1"],
 };

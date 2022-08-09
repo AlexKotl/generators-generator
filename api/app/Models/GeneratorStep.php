@@ -12,6 +12,7 @@ class GeneratorStep extends Model
     public $timestamps = false;
 
     protected $fillable = ['generator_id'];
+    protected $hidden = ['order', 'flag', 'generator_id'];
 
     public function generatorStepItems()
     {

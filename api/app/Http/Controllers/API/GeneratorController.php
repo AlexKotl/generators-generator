@@ -12,7 +12,15 @@ class GeneratorController extends Controller
 {
     public function list()
     {
-        return response()->json([]);
+        $generators = Generator::where('flag', 1)->get();
+
+        return response()->json($generators);
+    }
+
+    public function details($id)
+    {
+        $generator = Generator::where('id', $id)->with('generatorSteps')->with('generatorSteps.generatorStepItems')->firstOrFail();
+        return response()->json($generator);
     }
 
     public function create(Request $request)

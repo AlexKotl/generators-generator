@@ -11,6 +11,7 @@ class Generator extends Model
 
     protected $fillable = ['title', 'description'];
 
+
     public function generatorSteps()
     {
         return $this->hasMany('App\Models\GeneratorStep', 'generator_id', 'id');

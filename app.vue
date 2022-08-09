@@ -1,7 +1,5 @@
 <template>
   <div>
-    <body class="bg-slate-600 text-white"></body>
-
     <div class="cotainer px-5">
       <div class="flex justify-between items-center">
         <NuxtLink to="/"><img src="~/assets/images/logo.svg" class="mw-100" width="200" alt="" /></NuxtLink>

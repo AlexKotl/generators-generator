@@ -12,12 +12,10 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  placeholder: string;
-  min?: string;
-  max?: string;
+  placeholder?: string;
+  min?: number;
+  max?: number;
   modelValue: string;
-  type?: {
-    default: "text";
-  };
+  type?: string;
 }>();
 </script>

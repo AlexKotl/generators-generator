@@ -34,7 +34,11 @@ const form = reactive({
   variants: ["", "", "", "", ""],
 });
 
-function submit() {
-  console.log("submitting", useRuntimeConfig().apiUrl);
+async function submit() {
+  const { data, pending, error } = await useFetch(useRuntimeConfig().apiUrl + "/generators/create", {
+    method: "post",
+    body: form,
+    key: Date(), // enable resubmitting
+  });
 }
 </script>

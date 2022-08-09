@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Generator extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'description'];
+
+    public function generatorSteps()
+    {
+        return $this->hasMany('App\Models\GeneratorStep', 'generator_id', 'id');
+    }
 }

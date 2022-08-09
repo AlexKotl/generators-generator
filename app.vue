@@ -4,7 +4,7 @@
 
     <div class="cotainer px-5">
       <div class="flex justify-between items-center">
-        <img src="~/assets/images/logo.svg" class="mw-100" width="200" alt="" />
+        <NuxtLink to="/"><img src="~/assets/images/logo.svg" class="mw-100" width="200" alt="" /></NuxtLink>
 
         <div class="leading-7">
           <NuxtLink
@@ -14,7 +14,7 @@
               { title: 'About', url: '/about' },
             ]"
             :to="link.url"
-            class="px-3 py-5 rounded font-bold text-slate-300 hover:bg-gray-100 hover:text-slate-800"
+            class="px-3 py-5 rounded text-slate-300 hover:bg-gray-100 hover:text-slate-800"
             :key="i"
             >{{ link.title }}</NuxtLink
           >

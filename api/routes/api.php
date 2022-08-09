@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/generators/list', 'App\Http\Controllers\API\GeneratorController@list');
+Route::post('/generators/create', 'App\Http\Controllers\API\GeneratorController@create');

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class GeneratorStepItem extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = ['generator_step_id', 'title'];
 }

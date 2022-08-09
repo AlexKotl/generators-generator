@@ -1,18 +1,11 @@
-<script setup lang="ts">
-const { pending, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
-watch(generators, (newGenerators) => {
-  console.log(newGenerators);
-});
-</script>
-
 <template>
   <div>
     <h1>Generators</h1>
-
-    <div v-if="pending">Loading generators...</div>
+    {{ generators }}
+    <Loading v-if="pending" />
     <div v-else>
-      <div v-for="generator of generators" :key="generator.id" class="rounded px-3 py-2">
-        <h2>
+      <div v-for="generator of generators" :key="generator.id" class="rounded px-3 py-2 my-1 bg-slate-300">
+        <h2 class="font-bold">
           {{ generator.title }}
         </h2>
         <div>
@@ -22,3 +15,10 @@ watch(generators, (newGenerators) => {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { pending, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
+watch(generators, (newGenerators) => {
+  console.log(newGenerators);
+});
+</script>

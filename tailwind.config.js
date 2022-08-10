@@ -6,5 +6,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  safelist: ["flex-1"],
+  safelist: ["flex-1", "bg-slate-600", "text-white"],
 };

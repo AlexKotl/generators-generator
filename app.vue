@@ -16,6 +16,7 @@
             :key="i"
             >{{ link.title }}</NuxtLink
           >
+          <GoogleLogin client-id="430958642962-124qr16rftpcaeno6519e8r0nb3v6b55.apps.googleusercontent.com" :callback="login"></GoogleLogin>
         </div>
       </div>
 
@@ -30,3 +31,11 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { GoogleLogin } from "vue3-google-login";
+
+function login(res) {
+  console.log("login:", res);
+}
+</script>

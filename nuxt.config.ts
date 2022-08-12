@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       bodyAttrs: {
-        class: "bg-slate-600 text-white",
+        class: "bg-gray-800 text-white",
       },
       title: "Generators Generator",
       meta: [

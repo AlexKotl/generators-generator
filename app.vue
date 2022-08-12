@@ -4,7 +4,7 @@
       <div class="flex justify-between items-center">
         <NuxtLink to="/"><img src="~/assets/images/logo.svg" class="mw-100" width="200" alt="" /></NuxtLink>
 
-        <div class="leading-7">
+        <div class="flex items-center">
           <NuxtLink
             v-for="(link, i) of [
               { title: 'Home', url: '/' },
@@ -12,7 +12,7 @@
               { title: 'About', url: '/about' },
             ]"
             :to="link.url"
-            class="px-3 py-5 rounded text-slate-300 hover:bg-gray-100 hover:text-slate-800"
+            class="px-3 py-2 mx-1 rounded text-slate-300 hover:bg-gray-100 hover:text-slate-800"
             :key="i"
             >{{ link.title }}</NuxtLink
           >
@@ -20,7 +20,8 @@
         </div>
       </div>
 
-      <div>
+      <div class="my-10">
+        <IfYouAddFakeComponent-FetchWillWork />
         <NuxtPage />
       </div>
 

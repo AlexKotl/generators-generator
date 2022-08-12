@@ -4,6 +4,22 @@
 
 @layer base {
   html {
-    font-family: Proxima Nova, system-ui, sans-serif;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+
+  @font-face {
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("~/assets/fonts/dm-sans-cufonfonts/DMSans-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("~/assets/fonts/dm-sans-cufonfonts/DMSans-Bold.ttf") format("truetype");
   }
 }

@@ -1,24 +1,26 @@
 <template>
   <div>
-    <h1>Generators</h1>
-    {{ generators }}
     <Loading v-if="pending" />
     <div v-else>
-      <div v-for="generator of generators" :key="generator.id" class="rounded px-3 py-2 my-1 bg-slate-300">
-        <h2 class="font-bold">
-          {{ generator.title }}
-        </h2>
-        <div>
-          {{ generator.description }}
+      <NuxtLink v-for="generator of generators" :key="generator.id" :to="'generator-' + generator.id">
+        <div class="rounded px-3 py-2 my-1 bg-slate-600 hover:bg-slate-500 flex justify-between">
+          <div>
+            <h2 class="font-bold">
+              {{ generator.title }}
+            </h2>
+            <div class="text-sm">
+              {{ generator.description }}
+            </div>
+          </div>
+          <div>
+            {{ generator.rating }}
+          </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const { pending, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
-watch(generators, (newGenerators) => {
-  console.log(newGenerators);
-});
 </script>

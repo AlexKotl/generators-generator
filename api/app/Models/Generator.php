@@ -9,7 +9,7 @@ class Generator extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'rating'];
 
 
     public function generatorSteps()

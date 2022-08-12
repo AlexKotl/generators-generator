@@ -13,6 +13,7 @@
             </div>
           </div>
           <div>
+            <img src="~/assets/images/thumbs-up.svg" alt="" />
             {{ generator.rating }}
           </div>
         </div>

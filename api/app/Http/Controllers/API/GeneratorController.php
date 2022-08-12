@@ -23,6 +23,20 @@ class GeneratorController extends Controller
         return response()->json($generator);
     }
 
+    public function generate($id)
+    {
+        $generator = Generator::findOrFail($id);
+        $generator->rating++;
+        $generator->save();
+
+        $words = [];
+        foreach ($generator->generatorSteps as $step) {
+            $words[] = $step->generatorStepItems->random()->title;
+        }
+
+        return response()->json(['words' => $words]);
+    }
+
     public function create(Request $request)
     {
         if (empty($request->get('title'))) {

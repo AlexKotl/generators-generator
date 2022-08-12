@@ -5,17 +5,19 @@
       <h1>{{ generator.title }}</h1>
       <p>{{ generator.description }}</p>
 
-      <div class="flex rounded justify-between bg-slate-200">
-        <div v-if="pendingGenerate">Generating...</div>
-        <div v-else v-for="word of generatedWords.words" :key="word">
+      <div class="flex rounded justify-around bg-slate-600 border-slate-500 border-2 border-solid my-5">
+        <div v-if="pendingGenerate || !generatedWords">Generating...</div>
+        <div v-else v-for="word of generatedWords.words" :key="word" class="px-5 py-5 text-center text-xl font-bold">
           {{ word }}
         </div>
       </div>
 
-      <Button @click="generate">
-        <img src="~/assets/images/rocket.svg" alt="" width="20" class="mr-2" />
-        Generate
-      </Button>
+      <div>
+        <Button @click="generate" class="py-4 px-10">
+          <img src="~/assets/images/rocket.svg" alt="" width="20" class="mr-2 inline-block" />
+          Generate
+        </Button>
+      </div>
     </div>
   </div>
 </template>

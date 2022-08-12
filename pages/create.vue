@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>Create your own generator</h1>
-    <form>
+    <div v-if="!userClientId" class="font-bold">Please login using Google Login to be able to add new generator.</div>
+    <form v-else>
       <div>
         <TextInput v-model="form.title" placeholder="Enter generator title" />
       </div>
@@ -27,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+const userClientId = useState("userClientId");
 const parts = ref(2);
 const form = reactive({
   title: "",

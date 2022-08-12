@@ -17,7 +17,7 @@
       <div>
         <Button @click="generate" class="py-4 px-10">
           <img src="~/assets/images/rocket.svg" alt="" width="20" class="mr-2 inline-block" />
-          Generate
+          {{ pendingGenerate ? "Running..." : "Generate" }}
         </Button>
       </div>
     </div>

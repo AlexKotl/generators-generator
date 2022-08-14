@@ -16,8 +16,9 @@
           <div v-if="generator.user_id === userId">
             <Button @click.prevent.stop="remove(generator.id)">Delete</Button>
           </div>
-          <div>
-            <img src="~/assets/images/thumbs-up.svg" alt="" />
+          <div class="text-center">
+            <img src="~/assets/images/rocket.svg" class="inline-block" alt="" width="16" />
+            <br />
             {{ generator.rating }}
           </div>
         </div>

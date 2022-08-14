@@ -1,9 +1,11 @@
 <template>
   <div class="container px-5 mx-auto">
-    <div class="flex justify-between items-center">
-      <NuxtLink to="/"><img src="~/assets/images/logo.svg" class="mw-100" width="200" alt="" /></NuxtLink>
+    <div class="sm:flex justify-between items-center">
+      <NuxtLink to="/">
+        <img src="~/assets/images/logo.svg" width="200" alt="" />
+      </NuxtLink>
 
-      <div class="flex items-center">
+      <div class="flex flex-wrap items-center">
         <NuxtLink
           v-for="(link, i) of [
             { title: 'Home', url: '/' },

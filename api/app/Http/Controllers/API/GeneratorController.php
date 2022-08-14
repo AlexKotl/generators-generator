@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Generator;
 use App\Models\GeneratorStep;
 use App\Models\GeneratorStepItem;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GeneratorController extends Controller
@@ -68,7 +69,17 @@ class GeneratorController extends Controller
             ]);
         }
 
+        $user = User::where('email', $request->header('email'))->first();
+
+        if (!$user) {
+            return response()->json([
+                'status' => 403,
+                'message' => 'User auth fail'
+            ]);
+        }
+
         $generator = Generator::create([
+            'user_id' => $user->id,
             'title' => $request->get('title'),
             'description' => $request->get('description'),
         ]);

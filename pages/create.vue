@@ -3,6 +3,7 @@
     <h1>Create your own generator</h1>
     <Alert v-if="false && !userEmail" class="font-bold">Please login using Google Login to be able to add new generator.</Alert>
     <Alert v-else-if="pending">Submitting form...</Alert>
+    <Alert v-else-if="error">Oops, some error happened...</Alert>
     <Alert v-else-if="isSubmitted">Generator created!</Alert>
     <form v-else>
       <Alert v-if="errorMessage">Oops... {{ errorMessage }}</Alert>
@@ -47,7 +48,7 @@ async function submit() {
     method: "post",
     body: form,
     headers: {
-      email: userEmail,
+      email: userEmail.value,
     },
     key: Date(), // enable resubmitting
   });

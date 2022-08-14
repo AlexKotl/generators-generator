@@ -12,6 +12,12 @@
             {{ word }}
           </div>
         </div>
+        <div v-if="generatedWords">
+          <Button @click="save" class="text-xs bg-slate-400 rounded-full my-2">
+            <img src="~/assets/images/star.svg" width="32" alt="" />
+            <div class="mt-2">{{ isSaved ? "Saved!" : "Save" }}</div>
+          </Button>
+        </div>
       </div>
 
       <div>
@@ -26,11 +32,26 @@
 
 <script setup lang="ts">
 const generatorId = useRoute().params.id;
+const isSaved = ref(false);
 const { pending, data: generator } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/show/" + generatorId);
 const { pendingGenerate, data: generatedWords, refresh } = useFetch(useRuntimeConfig().apiUrl + "/generators/generate/" + generatorId);
 
 function generate() {
+  isSaved.value = false;
   refresh();
+}
+
+function save() {
+  const words = generatedWords.value.words.reduce((prev, next) => prev + " " + next, "");
+
+  if (process.client) {
+    let saved = JSON.parse(localStorage.getItem("saved")) || [];
+    if (saved.indexOf(words) === -1) {
+      saved.push(words);
+      localStorage.setItem("saved", JSON.stringify(saved));
+      isSaved.value = true;
+    }
+  }
 }
 </script>
 

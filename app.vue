@@ -10,6 +10,7 @@
           v-for="(link, i) of [
             { title: 'Home', url: '/' },
             { title: 'Create', url: '/create' },
+            { title: 'Ideas', url: '/saved' },
             { title: 'About', url: '/about' },
           ]"
           :to="link.url"
@@ -39,10 +40,16 @@
 </template>
 
 <script setup lang="ts">
+import { client } from "process";
 import { GoogleLogin, decodeCredential } from "vue3-google-login";
 
 const userId = useState("userId");
 const userEmail = useState("userEmail");
+const savedList = useState("savedList");
+
+if (process.client && localStorage.getItem("saved")) {
+  savedList.value = JSON.parse(localStorage.getItem("saved"));
+}
 
 async function login(res) {
   const userData = decodeCredential(res.credential);

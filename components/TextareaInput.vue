@@ -1,6 +1,6 @@
 <template>
   <textarea
-    class="rounded w-full py-2 px-2 my-2 text-gray-800"
+    class="rounded w-full py-2 px-2 my-2 text-gray-800 bg-slate-200"
     :rows="rows"
     :placeholder="placeholder"
     @input="$emit('update:modelValue', $event.target.value)"

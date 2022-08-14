@@ -1,8 +1,11 @@
 <template>
   <div>
     <h1>Create your own generator</h1>
-    <div v-if="!userClientId" class="font-bold">Please login using Google Login to be able to add new generator.</div>
+    <Alert v-if="false && !userClientId" class="font-bold">Please login using Google Login to be able to add new generator.</Alert>
+    <Alert v-else-if="pending">Submitting form...</Alert>
     <form v-else>
+      <Alert v-if="errorMessage">Oops... {{ errorMessage }}</Alert>
+
       <div>
         <TextInput v-model="form.title" placeholder="Enter generator title" />
       </div>
@@ -30,6 +33,7 @@
 <script setup lang="ts">
 const userClientId = useState("userClientId");
 const parts = ref(2);
+const errorMessage = ref("");
 const form = reactive({
   title: "",
   description: "",
@@ -42,5 +46,9 @@ async function submit() {
     body: form,
     key: Date(), // enable resubmitting
   });
+  console.log(data.value);
+  if (data.value?.error) {
+    errorMessage.value = data.value.error;
+  }
 }
 </script>

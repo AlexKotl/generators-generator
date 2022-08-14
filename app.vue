@@ -37,12 +37,24 @@
 </template>
 
 <script setup lang="ts">
-import { GoogleLogin } from "vue3-google-login";
+import { GoogleLogin, decodeCredential } from "vue3-google-login";
 
-const userClientId = useState("userClientId");
+const userId = useState("userId");
 
 function login(res) {
   console.log("login:", res);
-  userClientId.value = res.clientId;
+  const userData = decodeCredential(res.credential);
+  console.log("Handle the userData", userData);
+
+  const { data } = useLazyFetch(useRuntimeConfig().apiUrl + "/user/auth", {
+    method: "post",
+    body: {
+      email: userData.email,
+      name: userData.name,
+      token: userData.jti,
+      picture: userData.picture,
+    },
+  });
+  userId.value = data.value.id;
 }
 </script>

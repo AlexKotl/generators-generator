@@ -1,6 +1,7 @@
 <template>
   <div>
     <Loading v-if="pending" />
+    <Alert v-else-if="error">Error loading data from the server</Alert>
     <div v-else>
       <NuxtLink v-for="generator of generators" :key="generator.id" :to="'generator-' + generator.id">
         <div class="rounded px-3 py-2 my-1 bg-slate-600 hover:bg-slate-500 flex justify-between">
@@ -23,5 +24,5 @@
 </template>
 
 <script setup lang="ts">
-const { pending, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
+const { pending, error, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
 </script>

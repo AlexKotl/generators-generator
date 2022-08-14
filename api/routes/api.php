@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/generators/list', 'App\Http\Controllers\API\GeneratorController@list');
 Route::get('/generators/show/{id}', 'App\Http\Controllers\API\GeneratorController@details');
 Route::get('/generators/generate/{id}', 'App\Http\Controllers\API\GeneratorController@generate');
+Route::delete('/generators/delete/{id}', 'App\Http\Controllers\API\GeneratorController@delete');
 Route::post('/generators/create', 'App\Http\Controllers\API\GeneratorController@create');
 
 Route::post('/user/auth', 'App\Http\Controllers\API\UserController@auth');

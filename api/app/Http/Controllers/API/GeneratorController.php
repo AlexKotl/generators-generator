@@ -23,6 +23,29 @@ class GeneratorController extends Controller
         return response()->json($generator);
     }
 
+    public function delete($id, Request $request)
+    {
+        $generator = Generator::findOrFail($id);
+
+        if ($request->header('email') !== $generator->user->email) {
+            return response()->json([
+                'status' => 403,
+                'message' => 'User check failed, generator does not belongs to ' . $request->header('email'),
+            ]);
+        }
+
+        foreach ($generator->generatorSteps as $step) {
+            GeneratorStepItem::where('generator_step_id', $step->id)->delete();
+            $step->delete();
+        }
+        $generator->delete();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Generator deleted',
+        ]);
+    }
+
     public function generate($id)
     {
         $generator = Generator::findOrFail($id);

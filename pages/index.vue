@@ -13,6 +13,9 @@
               {{ generator.description }}
             </div>
           </div>
+          <div v-if="generator.user_id === userId">
+            <Button @click.prevent.stop="remove(generator.id)">Delete</Button>
+          </div>
           <div>
             <img src="~/assets/images/thumbs-up.svg" alt="" />
             {{ generator.rating }}
@@ -24,5 +27,16 @@
 </template>
 
 <script setup lang="ts">
-const { pending, error, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
+const userId = useState("userId");
+
+const { pending, error, refresh, data: generators } = useLazyFetch(useRuntimeConfig().apiUrl + "/generators/list");
+
+async function remove(id) {
+  if (confirm("Are you sure you want to delete your generator? This operation cannot be undone.")) {
+    const { data } = await useFetch(useRuntimeConfig().apiUrl + "/generators/delete/" + id, {
+      method: "delete",
+    });
+    refresh();
+  }
+}
 </script>

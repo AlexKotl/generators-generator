@@ -40,13 +40,13 @@
 import { GoogleLogin, decodeCredential } from "vue3-google-login";
 
 const userId = useState("userId");
+const userEmail = useState("userEmail");
 
-function login(res) {
-  console.log("login:", res);
+async function login(res) {
   const userData = decodeCredential(res.credential);
   console.log("Handle the userData", userData);
 
-  const { data } = useLazyFetch(useRuntimeConfig().apiUrl + "/user/auth", {
+  const { data } = await useLazyFetch(useRuntimeConfig().apiUrl + "/user/auth", {
     method: "post",
     body: {
       email: userData.email,
@@ -56,5 +56,6 @@ function login(res) {
     },
   });
   userId.value = data.value.id;
+  userEmail.value = userData.email;
 }
 </script>

@@ -16,4 +16,9 @@ class Generator extends Model
     {
         return $this->hasMany('App\Models\GeneratorStep', 'generator_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 }

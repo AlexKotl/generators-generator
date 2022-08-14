@@ -28,7 +28,7 @@
     </div>
 
     <div class="my-10">
-      <IfYouAddFakeComponent-FetchWillWork />
+      <!-- <IfYouAddFakeComponent-FetchWillWork /> -->
       <NuxtPage />
     </div>
 

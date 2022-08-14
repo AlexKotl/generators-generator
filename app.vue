@@ -18,17 +18,18 @@
           :key="i"
           >{{ link.title }}</NuxtLink
         >
-        <GoogleLogin
-          client-id="430958642962-124qr16rftpcaeno6519e8r0nb3v6b55.apps.googleusercontent.com"
-          :callback="login"
-          prompt
-          auto-login
-        ></GoogleLogin>
+        <client-only>
+          <GoogleLogin
+            client-id="430958642962-124qr16rftpcaeno6519e8r0nb3v6b55.apps.googleusercontent.com"
+            :callback="login"
+            prompt
+            auto-login
+          ></GoogleLogin>
+        </client-only>
       </div>
     </div>
 
     <div class="my-10">
-      <!-- <IfYouAddFakeComponent-FetchWillWork /> -->
       <NuxtPage />
     </div>
 
@@ -40,8 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { client } from "process";
-import { GoogleLogin, decodeCredential } from "vue3-google-login";
+// import { decodeCredential } from "vue3-google-login";
 
 const userId = useState("userId");
 const userEmail = useState("userEmail");
@@ -53,7 +53,6 @@ if (process.client && localStorage.getItem("saved")) {
 
 async function login(res) {
   const userData = decodeCredential(res.credential);
-  console.log("Handle the userData", userData);
 
   const { data } = await useLazyFetch(useRuntimeConfig().apiUrl + "/user/auth", {
     method: "post",

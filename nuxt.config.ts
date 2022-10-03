@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/css/main.css"],
   ssr: false,
+  generate: {
+    subFolders: false,
+  },
   app: {
     head: {
       bodyAttrs: {
